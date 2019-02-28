@@ -46,8 +46,8 @@ public class xmlParseUtility {
       xmlElement = new XMLElement("Custom-Stack-Trace");
       seElement.addContent(xmlElement);
       if (stackTrace != null) {
-        for (int i=0; i<stackTrace.size(); i++) {
-          xmlElement.addContent((new XMLElement("Trace")).addContent((String) stackTrace.elementAt(i)));
+        for (int i=0; i<stackTrace.length; i++) {
+          xmlElement.addContent((new XMLElement("Trace")).addContent((String) stackTrace[i].toString()));
         }
       }
 
@@ -61,9 +61,10 @@ public class xmlParseUtility {
         }
       }
 
-      seElement.addContent(getXmlElement(trackedVariables, "trackedVariables"));
+      seElement.addContent(getXmlElement(new Exception(trackedVariables.toString()), "trackedVariables"));
     } catch (Exception e) {
-      log.error("Failed to print XML output for SuperException instance.", e);
+      System.out.println("Failed to print XML output for SuperException instance.");
+      e.printStackTrace();
     }
 
     return(seElement);

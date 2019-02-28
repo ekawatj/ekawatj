@@ -1,4 +1,4 @@
-package com.ekawatj.java.common.demo;
+package com.ekawatj.common.demo;
 
 import java.util.Arrays;
 import java.util.List;
